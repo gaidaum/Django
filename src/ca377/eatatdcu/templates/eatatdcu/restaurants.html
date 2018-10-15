@@ -1,1 +1,17 @@
-No restaurants found!!!!!!!
+{%if resdata%}
+	
+	<h1> All restaurants in {{ campus }}</h1>
+
+{% for restaurants in resdata%}
+	<ul>
+		<li> {{restaurants.name}}, {{restaurants.location}} {{restaurants.staff}} </li>
+		
+	</ul>
+{%endfor%}
+	
+{%else%}
+	<h3> No restaurants found </h3>
+		
+{%endif%}
+
+

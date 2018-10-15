@@ -15,7 +15,7 @@ class Restaurant(models.Model):
    opening_hours = models.TimeField()
    closing_hours = models.TimeField()
    capacity = models.IntegerField()
-
+   staff = models.CharField(max_length=100, default =(''))
    def __str__(self):
       return self.name
 
