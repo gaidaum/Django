@@ -26,4 +26,5 @@ def restaurants(request):
 		return HttpResponse(template.render({'campus': campus, 'resdata': resdata},request))
 	except Campus.DoesNotExist:
 		return HttpResponse('No such campus') 
+	
   
