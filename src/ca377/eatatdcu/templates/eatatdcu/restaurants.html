@@ -1,17 +1,27 @@
-{% if resdata %}
-	
-		<h1> All restaurants in {{ campus }}</h1>
-
-		{% for restaurants in resdata %}
-		<ul>
-			<li> {{restaurants.name}}, {{restaurants.location}} {{restaurants.staff}} </li>
-		
-		</ul>
-	{% endfor %}
-	
+{% if error %}
+   {{ error }}
 {% else %}
-	<h3> No restaurants found </h3>
-		
-{% endif %}
+   <h3>Restaurants</h3>
+   {% if restaurants %}
+      {% for r in restaurants %}
+         <li>{{ r.name}}, {{r.location}}  
+         {% if r.is_staff_only %} (staff only!) {% endif %}
+	 <a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a>
+         </li>
+      {% endfor %}
+   {% else %}
+      No restaurants found
+   {% endif %}
 
+   <h3>Cafes</h3>
+   {% if cafes %}
+      {% for c in cafes %}
+         <li>{{ c.name}}, {{c.location}}  
+         {% if c.is_staff_only %} (staff only!) {% endif %}
+         </li>
+      {% endfor %}
+   {% else %}
+      No cafes found
+   {% endif %}
+{% endif %}
 
