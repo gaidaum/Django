@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Restaurant,Campus
+import json
+import requests
 
 
 def index(request):
@@ -23,8 +25,13 @@ def restaurants(request):
 
 def specials(request,restaurant):
     template = loader.get_template('eatatdcu/specials.html')
+    #restaurant = request.GET.get('restaurant','')
+    #specials_url = "http://jfoster.pythonanywhere.com/specials/" + restaurant
+    #specials_info = requests.get(specials_url)
+    #jason = specials_info.json()
+    #r = jason["date"]
 
-    # call the web service to get the daily special for "restaurant"
-
-    # pass the information returned by the web service into the "specials.html" template
+    specials_url = requests.get("http://jfoster.pythonanywhere.com/specials/" + restaurant)
+    rest = specials_url.json()
+    return HttpResponse(template.render(rest,request))
 
