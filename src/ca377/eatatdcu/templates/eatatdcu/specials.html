@@ -1,8 +1,7 @@
-{% if error_num == 500 %}
-	{{error_msg}}
-	{%else%}
-<h3>{{ restaurant_name }} </h3>
-<p> Daily Special: {{ daily_special}} </p> 
-<p>({{ date}})</p>
-
-{%endif%}
+{% if error %}
+   <b>An error has occurred</b>: {{ error }}
+{% else %}
+   <b>{{restaurant_name }}</b><br>
+   Daily special:{{ daily_special }} <br>
+   ({{ date }})
+{% endif %}
