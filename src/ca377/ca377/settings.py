@@ -25,7 +25,7 @@ SECRET_KEY = 'a!)*_r*-v9i+&o5_y_zbw$_l^vy$y9lqkmhn!tq#0d8f5s!7q6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'mbezbradica.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'gaidaum2.pythonanywhere.com']
 
 
 # Application definition
@@ -120,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "home/gaidaum2/src/ca377/eatatdcu/static"
+
