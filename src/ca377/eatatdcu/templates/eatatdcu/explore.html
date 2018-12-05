@@ -1,0 +1,131 @@
+{%load static%}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  
+    <link rel="stylesheet" href="{% static './css/Design.css' %}" />
+    <script type="text/javascript">
+
+
+        var nrImg = 6;  
+        var IntSeconds = 2;    
+
+        function Load()
+        {
+            nrShown = 0;   
+            Vect = new Array(nrImg + 10);
+            Vect[0] = document.getElementById("Img1");
+            Vect[0].style.visibility = "visible";
+
+            document.getElementById("S" + 0).style.visibility = "visible";
+
+            for (var i = 1; i < nrImg; i++)
+            {
+                Vect[i] = document.getElementById("Img" + (i + 1));
+                document.getElementById("S" + i).style.visibility = "visible";
+            }
+
+            document.getElementById("S" + 0).style.backgroundColor = "rgba(255, 255, 255, 0.90)";
+            document.getElementById("SP" + nrShown).style.visibility = "visible";
+
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        function Timer()
+        {
+            nrShown++;
+            if (nrShown == nrImg)
+                nrShown = 0;
+            Effect();
+        }
+      
+        function next()
+        {
+            nrShown++;
+            if (nrShown == nrImg)
+                nrShown = 0;
+            Effect();
+
+            clearInterval(mytime);
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        function prev()
+        {
+            nrShown--;
+            if (nrShown == -1)
+                nrShown = nrImg -1;
+            Effect();
+
+            clearInterval(mytime);
+            mytime = setInterval(Timer, IntSeconds * 1000);
+        }
+        
+        function Effect()
+        {
+            for (var i = 0; i < nrImg; i++)
+            {
+                Vect[i].style.opacity = "0";   
+                Vect[i].style.visibility = "hidden";
+
+                document.getElementById("S" + i).style.backgroundColor = "rgba(0, 0, 0, 0.70)";
+                document.getElementById("SP" + i).style.visibility = "hidden";
+            }
+            Vect[nrShown].style.opacity = "1";
+            Vect[nrShown].style.visibility = "visible";
+            document.getElementById("S" + nrShown).style.backgroundColor = "rgba(255, 255, 255, 0.90)";
+            document.getElementById("SP" + nrShown).style.visibility = "visible";
+        }
+
+    </script>
+    <title></title>
+</head>
+
+<body onload="Load()">
+    <div id="slider">
+        <div id="imgs">
+            
+            <img id="Img1" src="{% static 'IMG/DCU1.jpg' %}"/>
+			<img id="Img2" src="{% static 'IMG/DCU2.jpg' %}"/>
+			<img id="Img3" src="{% static 'IMG/DCU3.jpg' %}"/>
+            <img id="Img4" src="{% static 'IMG/DCU4.jpg' %}"/>
+			<img id="Img5" src="{% static 'IMG/DCU5.jpg' %}"/>
+			<img id="Img6" src="{% static 'IMG/DCU6.jpg' %}"/>
+        </div>
+		
+        
+        <div id="Snav">
+            
+            <div id="SnavUp">
+                <div id="Scircles">
+                    <ul>
+                       
+                        <li id="S0"></li>
+                        <li id="S1"></li>
+                        <li id="S2"></li>
+						<li id="S3"></li>
+						<li id="S4"></li>
+						<li id="S5"></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="SnavMiddle">
+                <img id="Sleft" src="{% static 'IMG/left.png' %}" onclick="prev()"/>
+                <img id="Sright" src="{% static 'IMG/right.png' %}" onclick="next()"/>
+            </div>
+           
+            <div id="SnavBottom">
+                 <form>
+  <input type="button" value="Go back!" onclick="history.back()">
+</form>
+                <p id="SP0">The Helix</p>
+                <p id="SP1">DCU Business School</p>
+                <p id="SP2">Main Entrance</p>
+				 <p id="SP3">Main Entrance 2</p>
+				 <p id="SP4">Student Accommodation</p>
+				 <p id="SP5">Nubar Food</p>
+            </div>
+			
+        </div>
+    </div>
+</body>
+</html>

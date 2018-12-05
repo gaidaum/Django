@@ -29,3 +29,8 @@ def specials(request,restaurant):
        return HttpResponse(template.render({'error':real_time_info['error_msg']},request))
     else:
        return HttpResponse(template.render(real_time_info,request))
+def contact(request):
+    return render(request, 'eatatdcu/contact.html',{})
+
+def explore(request):
+    return render(request, 'eatatdcu/explore.html',{})

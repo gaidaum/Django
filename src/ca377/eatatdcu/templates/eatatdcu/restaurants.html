@@ -1,18 +1,79 @@
-{% if error %}
+{%load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Eat At DCU! | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    
+    
+</head>
+
+<body>
+    <header>
+      <img class = "logo" src="{% static 'photo/dcu.png' %}"  style='max-height:80px;' alt="logo">
+        <div class="container">
+
+            <div id="branding">
+
+                <h1><span class ="highlight"> Eat </span> At DCU!</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class= "current"><a href= "{% url 'eatatdcu:index'  %}">Home</a></li>
+              
+                    <li><a href = "/eatatdcu/explore">Explore DCU</a></li>
+                    <li><a href = "/eatatdcu/contact">Contact</a></li>
+                    <li><a href="https://www.dcu.ie/">DCU</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id = "showcase">
+        <div class="container">
+           <h1>BEST WAY TO FIND YOUR NEXT MEAL!</h1>
+            <h2><u>Discover your University!</u></h2>
+
+        </div>
+    </section>
+
+    <section id="search">
+    <div class="container">
+        <h1>Search your CAMPUS!</h1>
+        <form action="{% url 'eatatdcu:restaurants'  %}" method="get">
+      <input type="text" name="campus" placeholder="Search . . ." required>
+      <button type="submit" class="button_1">Search</button>
+  </form>
+    </div>
+    </section>
+
+    <section id = "result">
+        <center>
+       {% if error %}
    {{ error }}
 
 {% else %}
+
    <h3>Restaurants</h3>
    {% if restaurants %}
       {% for r in restaurants %}
-         <li>{{ r.name}}, {{r.location}} 
-         <b> Opening hours: </b> {{ r.opening_hours}} - {{r.closing_hours}} 
+         <li>{{ r.name}}, {{r.location}}
+         <b> Opening hours: </b> {{ r.opening_hours}} - {{r.closing_hours}}
          {% if r.is_staff_only %} (staff only!) {% endif %}
          {% if r.is_open_wknd%} (open on weekends: {{ r.opening_hours_wknd}} - {{ r.closing_hours_wknd}})
          {% else%}
          (closed on weekends)
          {% endif%}
-	 <a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a>
+    <a href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a>
          </li>
       {% endfor %}
    {% else %}
@@ -22,8 +83,8 @@
    <h3>Cafes</h3>
    {% if cafes %}
       {% for c in cafes %}
-         <li>{{ c.name}}, {{c.location}} 
-         <b> Opening hours: </b> {{c.opening_hours}} - {{c.closing_hours}} 
+         <li>{{ c.name}}, {{c.location}}
+         <b> Opening hours: </b> {{c.opening_hours}} - {{c.closing_hours}}
          {% if c.is_staff_only %} (staff only!) {% endif %}
          {% if c.is_open_wknd%}
          (open on weekends: {{ c.opening_hours_wknd}}) - {{ c.closing_hours_wknd}})
@@ -36,3 +97,35 @@
       No cafes found
    {% endif %}
 {% endif %}
+</center>
+</section>
+    <section id="boxes">
+      </section>
+
+     <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Location</h4>
+            <p class="lead mb-0">Glasnevin D9
+              <br>DCU</p>
+          </div>
+          
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">About Eat at DCU</h4>
+            <p class="lead mb-0">Eat at DCU is a free to use website to find out the opening and closing times for restaurants and cafes.<br>
+              <a href="https://www.dcu.ie/">Find out More</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Eat At DCU 2018</small>
+      </div>
+    </div>
+     
+    
+</body>
+</html>

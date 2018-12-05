@@ -15,7 +15,6 @@
     
     
 </head>
-
 <body>
     <header>
       <img class = "logo" src="{% static 'photo/dcu.png' %}"  style='max-height:80px;' alt="logo">
@@ -28,7 +27,8 @@
             <nav>
                 <ul>
                     <li class= "current"><a href= "{% url 'eatatdcu:index'  %}">Home</a></li>
-                     <li><a href = "/eatatdcu/explore">Explore DCU</a></li>
+                    
+                    <li><a href = "/eatatdcu/explore">Explore DCU</a></li>
                     <li><a href = "/eatatdcu/contact">Contact</a></li>
                     <li><a href="https://www.dcu.ie/">DCU</a></li>
                 </ul>
@@ -36,42 +36,29 @@
         </div>
     </header>
 
+<html>
+<head>
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="{% static './css/contact.css' %}">
+</head>
+<body>
+<div class = "contact-title">
+    <h1> Say Hello</h1>
+    <h2>We are always ready to hear you out!</h2>
+  </div>
+  <center>
+  <div class="contact-form">
+    <form id="contact-form" method="post" action="contact.php">
+      <input type="text" name="name" class ="form-control" placeholder="Your Name" required="">
+      <br>
+      <input type="email" name="email" class ="form-control" placeholder="Your Email" required="">
+      <br>
+        <textarea name= "message" class="form-control" placeholder="Message" row = "4" required></textarea><br>
+        <input type="submit" class = "form-control submit" value="Send Message">
 
-    <section id = "showcase">
-        <div class="container">
-            <h1>BEST WAY TO FIND YOUR NEXT MEAL!</h1>
-            <h2><u>Discover your University!</u></h2>
-
-        </div>
-    </section>
-
-   <section id="search">
-    <div class="container">
-        <h1>Search your CAMPUS!</h1>
-        <form action="{% url 'eatatdcu:restaurants'  %}" method="get">
-      <input type="text" name="campus" placeholder="Search . . ." required>
-      <button type="submit" class="button_1">Search</button>
-  </form>
+    </form>
+  </center>
     </div>
-    </section>
-
-    <section id = "result">
-      <center>
-          <form>
-  <input type="button" value="Go back!" onclick="history.back()">
-</form>
-      {% if error %}
-   <b>An error has occurred</b>: {{ error }}
-{% else %}
-   <b>{{restaurant_name }}</b><br>
-   Daily special: {{ daily_special }} <br>
-   ({{ date }})
-{% endif %}
-</center>
-
-</section>
-    <section id="boxes">
-      </section>
 
     <footer class="footer text-center">
       <div class="container">
@@ -81,7 +68,7 @@
             <p class="lead mb-0">Glasnevin D9
               <br>DCU</p>
           </div>
-          
+
           <div class="col-md-4">
             <h4 class="text-uppercase mb-4">About Eat at DCU</h4>
             <p class="lead mb-0">Eat at DCU is a free to use website to find out the opening and closing times for restaurants and cafes.<br>
@@ -96,7 +83,6 @@
         <small>Copyright &copy; Eat At DCU 2018</small>
       </div>
     </div>
-     <!-- Bootstrap core JavaScript -->
-    
+
 </body>
 </html>

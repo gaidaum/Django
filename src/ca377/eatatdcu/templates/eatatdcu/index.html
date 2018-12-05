@@ -1,5 +1,105 @@
-<h1>Eat at DCU!</h1>
-<form action="{% url 'eatatdcu:restaurants'  %}" method="get">
-Campus: <input type="text" name="campus"><br>
-<input type="submit" value = "Go">
-</form>
+{%load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Eat At DCU! | Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    
+    
+</head>
+<body>
+    <header>
+      <img class = "logo" src="{% static 'photo/dcu.png' %}"  style='max-height:80px;' alt="logo">
+        <div class="container">
+
+            <div id="branding">
+
+                <h1><span class ="highlight"> Eat </span> At DCU!</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class= "current"><a href= "{% url 'eatatdcu:index'  %}">Home</a></li>
+                    <li><a href = "/eatatdcu/explore">Explore DCU</a></li>
+                    <li><a href = "/eatatdcu/contact">Contact</a></li>
+                    <li><a href="https://www.dcu.ie/">DCU</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id = "showcase">
+        <div class="container">
+            <h1>BEST WAY TO FIND YOUR NEXT MEAL!</h1>
+            <h2><u>Discover your University!</u></h2>
+
+        </div>
+    </section>
+
+    <section id="search">
+    <div class="container">
+        <h1>Search your CAMPUS!</h1>
+        <form action="{% url 'eatatdcu:restaurants'  %}" method="get">
+      <input type="text" name="campus" placeholder="Search . . ." required>
+      <button type="submit" class="button_1">Search</button>
+  </form>
+    </div>
+    </section>
+
+    <section id="boxes">
+
+
+
+    </section>
+
+    <section class= "about" id="about">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">About</h2>
+        
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">Eat at DCU helps you choose where your next meal will be! Choose from all 4 campuses and get to know the system better.</p>
+          </div>
+          <div class="col-lg-4 mr-auto">
+            <p class="lead">Whether you're a student looking to find a meeting point with your classmates. Or a DCU employee Eat at DCU got it covered!</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Location</h4>
+            <p class="lead mb-0">Glasnevin D9
+              <br>DCU</p>
+          </div>
+          
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">About Eat at DCU</h4>
+            <p class="lead mb-0">Eat at DCU is a free to use website to find out the opening and closing times for restaurants and cafes.<br>
+              <a href="https://www.dcu.ie/">Find out More</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Eat At DCU 2018</small>
+      </div>
+    </div>
+     <!-- Bootstrap core JavaScript -->
+    
+</body>
+</html>
